@@ -4,11 +4,13 @@ using namespace std;
 
 #define vazio '.'
 #define parede '#'
-#define deOndeVeio 'E'
+#define deOndeVeio 'A'
 #define queijo 'Q'
 #define rato 'R'
+#define entrada 'E'
 #define largura 5
 #define altura 5
+
 
 #define cima 0
 #define baixo 1 
@@ -35,7 +37,10 @@ void exibirMapa (char mapa [largura][altura]){
             }
         }
         mapa[0][0] = entrada;
+        mapa[0][3]= parede;
         mapa[1][3] = parede;
+        mapa[2][3] = parede;
+        mapa[3][3]= parede;
         mapa[3][3] = queijo;
     exibirmapa(mapa);
     }
@@ -53,34 +58,36 @@ bool navegar(char labirinto [largura][altura], int X , int Y , char deOndeVeio, 
     else if (labirinto[X][Y] == parede || labirinto [X][Y] == visitando){
         return false;
     }else{
-        //mexernomapa
-        //mostrarmapa
 
         if(deOndeVeio != direita and navegar(labirinto,X,Y+1, esquerda, queijo)){
-            //atualizar mapa e exibir
+            exibirMapa;
+            [X][Y] = '+'
             return true;
 
         }
         else if (deOndeVeio != baixo and navegar(labirinto,X+1,Y, cima, queijo)){
-            //atualizar mapa e exibir
+            exibirMapa;
+            [X][Y] = '+';
             return true;
 
         }
 
         else if (deOndeVeio != esquerda and navegar(labirinto,X,Y-1, direita,queijo)){
-            //atualizar mapa e exibir
+            exibirMapa;
+            [X][Y] = '+';
             return true;
 
         }
 
         else if (deOndeVeio != cima and navegar(labirinto,X-1, Y, baixo, queijo)){
-            //atualizar mapa e exibir
+            exibirMapa;
+            [X][Y] = '+';
             return true;
 
         
 
         }    
-        //exibir mapa    
+        exibirMapa;    
     }    
     return false;
 
